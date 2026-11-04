@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Add option to skip differential expression analysis (`--skipDE`) ([#104](https://github.com/nasa/GeneLab_Data_Processing/issues/104))
 - Add nextflow schema support for parameter validation and help text generation
 - Add conda support for easier local development and debugging
+- Add cache-first loading of Ensembl FTP mart-dump tables via `--mart_cache_dir` (default: `${launchDir}/ensembl_mart_dumps`); create the cache directory if missing, check write access, and retain downloaded tables in release-specific subdirectories for reuse across runs
 
 ### Changed
 
@@ -42,6 +43,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Rename `UPDATE_ISA_TABLES` and `update_curation_table.py` to `UPDATE_ASSAY_TABLE` and `update_assay_table.py` to better reflect their purpose
   - Add new PURGE_PROCESSING_INFO Nextflow module to strip full paths in nextflow_processing_info_GLmicroarray.txt before publishing
   - Add parameter validation and summary log from nf-schema
+- Update workflow (main and post-processing) and subworkflow code for Nextflow strict syntax: move top-level assignments into workflow bodies, declare the shared completion-log variable explicitly, replace implicit closure parameters, and remove or mark unused bindings
 
 ### Removed
 
